@@ -4,33 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>INOV Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
 
-    <div>
-        <nav class="flex justify-between">
+<body class="bg-gray-800 text-white font-hanken-grotesk mb-10">
+    <div class="px-10">
+        <nav class="flex justify-between items-center bg-gray-800 py-4 border-b border-white/30">
             <div>
                 <a href="/">
                     <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="" class="size-10">
                 </a>
             </div>
 
-            <div>
-                <a href="#">Books</a>
-                <a href="#">Authors</a>
-                <a href="#">Publishers</a>
+            <div class="space-x-6 font-bold">
+                <a href="/">Books</a>
+                <a href="/authors">Authors</a>
+                <a href="/publishers">Publishers</a>
             </div>
 
-            <div>
-                <a href="#">Add a Book</a>
+            <div class="space-x-6 font-hanken-grotesk">
+                <a href="{{ route('login') }}" class="hover:font-bold">Log In</a>
+                <a href="{{ route('register') }}" class="hover:font-bold">Register</a>
             </div>
         </nav>
+
+        <main class="mt-10 max-w-[986px] mx-auto">
+            {{ $slot }}
+        </main>
     </div>
-
-    <main>
-        {{ $slot }}
-    </main>
-
 </body>
 </html>
