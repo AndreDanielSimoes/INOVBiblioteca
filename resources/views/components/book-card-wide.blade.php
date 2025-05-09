@@ -6,7 +6,7 @@
     </div>
 
     <div class="flex-1 flex flex-col">
-        <a href="#" class="self-start text-sm text-gray-300">{{ $book->authors->take(3)->pluck('name')->join(', ') }}</a>
+        <p class="self-start text-sm text-gray-300">{{ $book->authors->take(3)->pluck('name')->join(', ') }}</p>
 
         <h3 class="font-bold text-xl mt-3 group-hover:text-blue-400 transition-colors duration-1000">{{ $book->title }}</h3>
         <p class="text-sm text-gray-300 mt-auto italic">{{ $book->description }}</p>

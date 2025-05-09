@@ -18,6 +18,10 @@
                     />
                 @endforeach
             </div>
+
+            <div>
+                {{ $publishers->links() }}
+            </div>
         </section>
 
     </div>

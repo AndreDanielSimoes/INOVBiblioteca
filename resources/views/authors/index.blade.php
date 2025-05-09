@@ -19,6 +19,10 @@
                     />
                 @endforeach
             </div>
+
+            <div>
+                {{ $authors->links() }}
+            </div>
         </section>
 
     </div>

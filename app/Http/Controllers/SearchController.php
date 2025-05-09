@@ -13,16 +13,18 @@ class SearchController extends Controller
     {
         $query = request('q');
 
-       $books = Book::query()
-           ->with(['tags', 'authors', 'publisher'])
-           ->where('title', 'LIKE', '%' . request('q') . '%')
-           ->orWhereHas('authors', function ($q) use ($query) {
-               $q->where('name', 'LIKE', "%{$query}%");
-           })
-           ->orWhereHas('publisher', function ($q) use ($query) {
-               $q->where('name', 'LIKE', "%{$query}%");
-           })
-           ->get();
+        $books = Book::query()
+            ->with(['tags', 'authors', 'publisher'])
+            ->where(function ($queryBuilder) use ($query) {
+                $queryBuilder->where('title', 'LIKE', '%' . $query . '%')
+                    ->orWhereHas('authors', function ($q) use ($query) {
+                        $q->where('name', 'LIKE', "%{$query}%");
+                    })
+                    ->orWhereHas('publisher', function ($q) use ($query) {
+                        $q->where('name', 'LIKE', "%{$query}%");
+                    });
+            })
+            ->get();
 
         $authors = Author::where('name', 'LIKE', "%{$query}%")->get();
 
