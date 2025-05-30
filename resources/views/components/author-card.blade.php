@@ -14,4 +14,15 @@
 
             </ul>
         </div>
+
+    @auth
+        @if (Auth::User()->role === 1)
+            <div class="">
+                <a href="/authors/{{ $author->id }}/edit" class="bg-red-500 hover:bg-red-400 font-bold px-4 py-1 rounded">
+                    Edit Details
+                </a>
+            </div>
+        @endif
+    @endauth
+
 </x-panel>

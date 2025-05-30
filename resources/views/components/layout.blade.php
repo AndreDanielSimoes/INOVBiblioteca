@@ -14,21 +14,21 @@
 
 <body class="bg-gray-800 text-white font-hanken-grotesk mb-10">
 <div class="px-10">
-    <nav class="flex justify-between items-center bg-gray-800 py-4 border-b border-white/30">
-        <div>
+    <nav class="relative flex items-center bg-gray-800 py-4 border-b border-white/30">
+        <div class="absolute left-10">
             <a href="/">
                 <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="" class="size-10">
             </a>
         </div>
 
-        <div class="space-x-6 font-bold text-xl">
+        <div class="mx-auto space-x-6 font-bold text-xl">
             <a href="/">Books</a>
             <a href="/authors">Authors</a>
             <a href="/publishers">Publishers</a>
         </div>
 
         @auth
-            <div class="space-x-6 font-bold flex">
+            <div class="absolute right-10 space-x-6 font-bold flex items-center">
                 <a href="/dashboard">Dashboard</a>
 
                 <form method="POST" action="/logout">
@@ -37,10 +37,12 @@
                     <button>Log Out</button>
                 </form>
             </div>
+
+
         @endauth
 
         @guest
-            <div class="space-x-6 font-hanken-grotesk">
+            <div class=" absolute right-10 space-x-6 font-hanken-grotesk">
                 <a href="{{ route('login') }}" class="hover:font-bold">Log In</a>
                 <a href="{{ route('register') }}" class="hover:font-bold">Register</a>
             </div>
